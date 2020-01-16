@@ -5,4 +5,6 @@
     <string name="check_out">Check this out!</string>
     <string name="switches"> Switch on / off</string>
     <string name="text_fill">Type here</string>
+    <string name="toast_message">Here is more information</string>
+
 </resources>

@@ -64,6 +64,7 @@
         android:layout_columnSpan="2"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="@string/text_fill"
-        android:gravity="left"/>
+        android:hint="@string/text_fill"
+        android:gravity="left"
+        android:inputType="textPersonName"/>
 </GridLayout>
