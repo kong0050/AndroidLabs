@@ -3,10 +3,15 @@ package com.example.androidlabs;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
+
+import static android.widget.CompoundButton.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,26 +22,69 @@ public class MainActivity extends AppCompatActivity {
 //        setContentView(R.layout.activity_main_grid);
         setContentView(R.layout.activity_main_relative);
 
-       final CheckBox  check = (CheckBox)findViewById(R.id.checkbox);
+//       final CheckBox  check = (CheckBox)findViewById(R.id.checkbox);
+//
+//        check.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//            Toast.makeText(MainActivity.this,(MainActivity.this).getResources().getString(R.string.toast_message), Toast.LENGTH_LONG).show();
+//            }
+//        });
+        final Button btn = (Button)findViewById(R.id.button);
 
-        check.setOnClickListener(new View.OnClickListener(){
+        btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-            Toast.makeText(MainActivity.this,(MainActivity.this).getResources().getString(R.string.toast_message), Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,(MainActivity.this).getResources().getString(R.string.toast_message), Toast.LENGTH_LONG).show();
             }
         });
 
 
+        final CheckBox  check = (CheckBox)findViewById(R.id.checkbox);
 
-        String s = "";
-        Snackbar snackbar = Snackbar.make(check, "Switch is"+s, Snackbar.LENGTH_LONG)
-                .setAction("UNDO", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Snackbar snackbar1 = Snackbar.make(check, "Message is restored!", Snackbar.LENGTH_LONG);
-                        snackbar1.show();
-                    }
-                });
-        snackbar.show();
+        check.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isChecked = check.isChecked();
+                String s = "";
+                if(isChecked==true){
+                    s="on";
+                }else{s="off";}
+                Snackbar snackbar = Snackbar.make(check, "Checkbox is "+s, Snackbar.LENGTH_LONG)
+                        .setAction("UNDO", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                check.setChecked(!check.isChecked());
+                                Snackbar snackbar1 = Snackbar.make(check, "Restored!", Snackbar.LENGTH_LONG);
+                                snackbar1.show();
+                                //remember to change the status of checked true to false!!!!!!! can get back to the original status
+                            }
+                        });
+                snackbar.show();
+            }
+        });
+
+
+        final Switch switcha = (Switch)findViewById(R.id.simpleSwitch);
+
+        switcha.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, final boolean isChecked) {
+                String s = "";
+                if(isChecked){
+                    s="on";
+                }else{s="off";}
+                Snackbar snackbar = Snackbar.make(switcha, "Switch is "+s, Snackbar.LENGTH_LONG)
+                        .setAction("UNDO", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                switcha.setChecked(!isChecked);
+                                Snackbar snackbar1 = Snackbar.make(check, "Restored!", Snackbar.LENGTH_LONG);
+                                snackbar1.show();
+                                //remember to change the status of checked true to false!!!!!!! can get back to the original status
+                            }
+                        });
+                snackbar.show();
+            }
+        });
+
     }
 }

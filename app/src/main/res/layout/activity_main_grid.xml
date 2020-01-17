@@ -32,7 +32,8 @@
         android:layout_columnSpan="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/check_out" />
+        android:text="@string/check_out"
+        android:checked="false"/>
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -55,7 +56,8 @@
         android:layout_columnSpan="1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/switches"/>
+        android:text="@string/switches"
+        android:textOn="on"/>
 
     <EditText
         android:id="@+id/EditText"

@@ -36,7 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="fill"
-            android:text="@string/check_out" />
+            android:text="@string/check_out"
+            android:checked="false" />
 
     </LinearLayout>
 
