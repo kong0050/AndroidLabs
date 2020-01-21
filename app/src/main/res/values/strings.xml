@@ -6,5 +6,13 @@
     <string name="switches"> Switch on / off</string>
     <string name="text_fill">Type here</string>
     <string name="toast_message">Here is more information</string>
+    <string name="on">on</string>
+    <string name="off">off</string>
+    <string name="checkbox1">Checkbox is </string>
+    <string name="undo">undo</string>
+    <string name="restore">Restored!</string>
+    <string name="switch1">Switch is </string>
+
+
 
 </resources>

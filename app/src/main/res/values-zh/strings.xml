@@ -7,4 +7,10 @@
     <string name="switches"> 切换 on / off</string>
     <string name="text_fill">输入</string>
     <string name="toast_message">更多信息！</string>
+    <string name="on">启动</string>
+    <string name="off">关闭</string>
+    <string name="checkbox1">勾选</string>
+    <string name="undo">撤销</string>
+    <string name="restore">恢复!</string>
+    <string name="switch1">切换</string>
 </resources>
