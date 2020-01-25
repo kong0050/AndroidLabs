@@ -14,5 +14,16 @@
     <string name="switch1">Switch is </string>
 
 
+    <string name="email">Enter your email address： </string>
+    <string name="password">Type your password： </string>
+    <string name="text_fill_email">Type email here </string>
+    <string name="ButtonText1">LOGIN</string>
+
+    <string name="label">Your profile</string>
+    <string name="name">Your name: </string>
+    <string name="email1">Your email: </string>
+    <string name="pic">Your picture: </string>
+    <string name="text_fill_name1">Enter your name</string>
+    <string name="text_fill_email1">Enter your email</string>
 
 </resources>

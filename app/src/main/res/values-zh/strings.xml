@@ -13,4 +13,17 @@
     <string name="undo">撤销</string>
     <string name="restore">恢复!</string>
     <string name="switch1">切换</string>
+
+
+    <string name="email">请输入你的邮箱：</string>
+    <string name="password">请输入你的密码： </string>
+    <string name="text_fill_email">在这里输入你的邮箱 </string>
+    <string name="ButtonText1">登录</string>
+
+    <string name="label">你的资料</string>
+    <string name="name">你的名字</string>
+    <string name="email1">你的邮箱</string>
+    <string name="pic">你的照片</string>
+    <string name="text_fill_name1">输入你的姓名</string>
+    <string name="text_fill_email1">输入你的照片</string>
 </resources>
