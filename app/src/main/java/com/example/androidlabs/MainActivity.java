@@ -55,10 +55,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startProfileActivity() {
-        Intent intent = new Intent(this, ProfileActivity.class);
-        startActivity(intent);
+        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
         intent.putExtra("EMAIL",mEmailView.getText().toString());
-        finish();
+        startActivity(intent);
+//        finish();
+
     }
     public void saveLoginInformation(String emailx) {
         Context context = MainActivity.this;
@@ -73,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences= getSharedPreferences("LoginEmail", Context .MODE_PRIVATE);
         String emailId = sharedPreferences.getString("Email","");
         mEmailView.setText(emailId);
-//        editor.putString("Password", password);
     }
 
 }

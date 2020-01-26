@@ -26,8 +26,8 @@ public class ProfileActivity extends AppCompatActivity {
         emailEditText = (EditText)findViewById(R.id.email1);
 
         Intent fromMain = getIntent();
-        fromMain.getStringExtra("EMAIL");
-        emailEditText.setText(fromMain.getStringExtra("EMAIL"));
+        String s = fromMain.getStringExtra("EMAIL");
+        emailEditText.setText(s);
 
         mImageButton = (ImageButton)findViewById(R.id.button2);
 
