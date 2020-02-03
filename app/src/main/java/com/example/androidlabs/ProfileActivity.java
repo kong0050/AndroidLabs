@@ -37,6 +37,14 @@ public class ProfileActivity extends AppCompatActivity {
                 dispatchTakePictureIntent();
             }
         });
+
+        final Button btn3 = (Button)findViewById(R.id.button3);
+        btn3.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                startChatRoomActivity();
+            }
+        });
     }
 
     final int REQUEST_IMAGE_CAPTURE = 1;
@@ -57,6 +65,15 @@ public class ProfileActivity extends AppCompatActivity {
         }
         Log.e(ACTIVITY_NAME,"In function:" + "onActivityResult" );
     }
+
+
+    private void startChatRoomActivity() {
+        Intent intent = new Intent(ProfileActivity.this, ChatRoomActivity.class);
+        startActivity(intent);
+//        finish();
+    }
+
+
 
 
     @Override

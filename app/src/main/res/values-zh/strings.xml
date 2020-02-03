@@ -26,4 +26,9 @@
     <string name="pic">你的照片</string>
     <string name="text_fill_name1">输入你的姓名</string>
     <string name="text_fill_email1">输入你的照片</string>
+
+    <string name="Go_to_chat">进入聊天</string>
+    <string name="btn_chat_message_send">发送</string>
+    <string name="et_chat_message">输入</string>
+    <string name="btn_chat_message_receive">收取</string>
 </resources>

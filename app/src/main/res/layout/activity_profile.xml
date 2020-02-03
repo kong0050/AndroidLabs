@@ -80,5 +80,12 @@
             android:text="@string/ButtonText1"
             android:layout_below="@id/text3"
             android:src= "@android:drawable/picture_frame"/>
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Go_to_chat"
+            android:layout_below="@id/button2"/>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

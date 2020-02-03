@@ -26,4 +26,8 @@
     <string name="text_fill_name1">Enter your name</string>
     <string name="text_fill_email1">Enter your email</string>
 
+    <string name="Go_to_chat">Go to chat</string>
+    <string name="btn_chat_message_send">SEND</string>
+    <string name="et_chat_message">Type here </string>
+    <string name="btn_chat_message_receive">RECEIVE</string>
 </resources>
