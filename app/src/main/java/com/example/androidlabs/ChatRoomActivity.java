@@ -76,9 +76,10 @@ public class ChatRoomActivity extends AppCompatActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
 
                 AlertDialog.Builder alertDialogBiulder = new AlertDialog.Builder (ChatRoomActivity.this);
-                alertDialogBiulder.setTitle("Do you want to delete this?");
-                alertDialogBiulder.setMessage("The selected row is: " + position+"\nThe database id:"+ id);
-                alertDialogBiulder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                alertDialogBiulder.setTitle((ChatRoomActivity.this).getResources().getString(R.string.delete_title));
+                alertDialogBiulder.setMessage((ChatRoomActivity.this).getResources().getString(R.string.delete_message1) + position
+                        +"\n"+ (ChatRoomActivity.this).getResources().getString(R.string.delete_message2)+ id);
+                alertDialogBiulder.setPositiveButton((ChatRoomActivity.this).getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -86,7 +87,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                         myListAdapter.notifyDataSetChanged();
                     }
                 });
-                alertDialogBiulder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                alertDialogBiulder.setNegativeButton((ChatRoomActivity.this).getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

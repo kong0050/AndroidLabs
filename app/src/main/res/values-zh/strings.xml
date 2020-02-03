@@ -31,4 +31,10 @@
     <string name="btn_chat_message_send">发送</string>
     <string name="et_chat_message">输入</string>
     <string name="btn_chat_message_receive">收取</string>
+
+    <string name="delete_title">确认删除？</string>
+    <string name="delete_message1">选中行：</string>
+    <string name="delete_message2">数据库id为：</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
 </resources>

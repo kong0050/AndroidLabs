@@ -30,4 +30,10 @@
     <string name="btn_chat_message_send">SEND</string>
     <string name="et_chat_message">Type here </string>
     <string name="btn_chat_message_receive">RECEIVE</string>
+
+    <string name="delete_title">Do you want to delete this?</string>
+    <string name="delete_message1">The selected row is: </string>
+    <string name="delete_message2">The database id:</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
 </resources>
