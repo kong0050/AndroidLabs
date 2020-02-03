@@ -74,7 +74,6 @@ public class ChatRoomActivity extends AppCompatActivity {
         theList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
-
                 AlertDialog.Builder alertDialogBiulder = new AlertDialog.Builder (ChatRoomActivity.this);
                 alertDialogBiulder.setTitle((ChatRoomActivity.this).getResources().getString(R.string.delete_title));
                 alertDialogBiulder.setMessage((ChatRoomActivity.this).getResources().getString(R.string.delete_message1) + position
