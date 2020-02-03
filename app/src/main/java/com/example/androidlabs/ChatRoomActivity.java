@@ -1,13 +1,16 @@
 package com.example.androidlabs;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -32,7 +35,6 @@ public class ChatRoomActivity extends AppCompatActivity {
 
         final Button btn1 = (Button)findViewById(R.id.btn_chat_message_send);
         final Button btn2 = (Button)findViewById(R.id.btn_chat_message_receive);
-
 
 
         btn1.setOnClickListener(new View.OnClickListener(){
@@ -68,8 +70,36 @@ public class ChatRoomActivity extends AppCompatActivity {
                 myListAdapter.notifyDataSetChanged();
             }
         });
-    }
 
+        theList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
+
+                AlertDialog.Builder alertDialogBiulder = new AlertDialog.Builder (ChatRoomActivity.this);
+                alertDialogBiulder.setTitle("Do you want to delete this?");
+                alertDialogBiulder.setMessage("The selected row is: " + position+"\nThe database id:"+ id);
+                alertDialogBiulder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        chatList.remove(theList.getItemAtPosition(position));
+                        myListAdapter.notifyDataSetChanged();
+                    }
+                });
+                alertDialogBiulder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+                    }
+                });
+                alertDialogBiulder.show();
+                return true;
+            }
+        });
+
+}
     private class MyListAdapter extends BaseAdapter {
         private Context context;
         private List<chatMessage> lists;
