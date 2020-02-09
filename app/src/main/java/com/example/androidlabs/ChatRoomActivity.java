@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat_room);
 
         List<chatMessage> chatList = new ArrayList<>();
+
         MyListAdapter myListAdapter = new MyListAdapter(this,chatList);
 
         ListView theList = findViewById(R.id.lv_chat_dialog);
@@ -40,7 +42,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                TextView typeMessage = (TextView)findViewById(R.id.et_chat_message);
+                EditText typeMessage = (EditText)findViewById(R.id.et_chat_message);
 //                if (TextUtils.isEmpty(typeMessage.getText().toString())) {
 //                    Toast.makeText(ChatRoomActivity.this, "Cannot be null!", Toast.LENGTH_SHORT).show();
 //                    return;
