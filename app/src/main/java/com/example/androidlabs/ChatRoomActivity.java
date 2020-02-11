@@ -104,20 +104,20 @@ public class ChatRoomActivity extends AppCompatActivity {
         theList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View v, int position, long id) {
-                AlertDialog.Builder alertDialogBiulder = new AlertDialog.Builder (ChatRoomActivity.this);
-                alertDialogBiulder.setTitle((ChatRoomActivity.this).getResources().getString(R.string.delete_title));
-                alertDialogBiulder.setMessage((ChatRoomActivity.this).getResources().getString(R.string.delete_message1) + position
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder (ChatRoomActivity.this);
+                alertDialogBuilder.setTitle((ChatRoomActivity.this).getResources().getString(R.string.delete_title));
+                alertDialogBuilder.setMessage((ChatRoomActivity.this).getResources().getString(R.string.delete_message1) + position
                         +"\n"+ (ChatRoomActivity.this).getResources().getString(R.string.delete_message2)+ id);
-                alertDialogBiulder.setPositiveButton((ChatRoomActivity.this).getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setPositiveButton((ChatRoomActivity.this).getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                     chatMessage selected = chatList.get(position);
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        deleteMessage(selected);
+                        deleteMessageFromDb(selected);
                         chatList.remove(theList.getItemAtPosition(position));
                         myListAdapter.notifyDataSetChanged();
                     }
                 });
-                alertDialogBiulder.setNegativeButton((ChatRoomActivity.this).getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                alertDialogBuilder.setNegativeButton((ChatRoomActivity.this).getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -125,11 +125,10 @@ public class ChatRoomActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 });
-                alertDialogBiulder.show();
+                alertDialogBuilder.show();
                 return true;
             }
         });
-
 }
 
     private void loadDataFromDatabase()
@@ -137,7 +136,6 @@ public class ChatRoomActivity extends AppCompatActivity {
         //get a database connection:
         DbHandler dbOpener = new DbHandler(this);
         db = dbOpener.getWritableDatabase();
-
 
         String [] columns = {DbHandler.COL_ID, DbHandler.COL_SEND , DbHandler.COL_MESSAGE};
         Cursor results = db.query(false, DbHandler.TABLE_NAME, columns, null, null, null,
@@ -164,7 +162,7 @@ public class ChatRoomActivity extends AppCompatActivity {
 
     }
 
-    protected void deleteMessage(chatMessage c)
+    protected void deleteMessageFromDb(chatMessage c)
     {
         db.delete(DbHandler.TABLE_NAME, DbHandler.COL_ID + "= ?", new String[] {Long.toString(c.getId())});
     }
@@ -196,13 +194,11 @@ public class ChatRoomActivity extends AppCompatActivity {
 
             if (isSend==true) {
                 newView = inflater.inflate(R.layout.right_item,parent,false);
-                chatMessage = (TextView) newView
-                        .findViewById(R.id.right_item);
+                chatMessage = (TextView) newView.findViewById(R.id.right_item);
                 chatMessage.setText(entity.getMessage());
             } else {
                 newView = inflater.inflate(R.layout.left_item,parent,false);
-                chatMessage = (TextView) newView
-                        .findViewById(R.id.left_item);
+                chatMessage = (TextView) newView.findViewById(R.id.left_item);
                 chatMessage.setText(entity.getMessage());
             }
             return newView;
@@ -212,7 +208,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     public void printCursor( Cursor c, int version){
         Log.i("DEBUG_TAG", "Database version number is "+ version
                 + " || number of columns " + c.getColumnCount()
-                +" || Results " + c.getCount());
+                +" || number of results " + c.getCount());
 
         String rowHeader = "|| ";
         for(int i = 0; i< c.getColumnCount();i++){
