@@ -87,5 +87,12 @@
             android:layout_height="wrap_content"
             android:text="@string/Go_to_chat"
             android:layout_below="@id/button2"/>
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/Go_to_weather"
+            android:layout_below="@id/button3"/>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

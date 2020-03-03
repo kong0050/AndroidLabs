@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class DbHandler extends SQLiteOpenHelper {
 
     protected final static String DATABASE_NAME = "ContactsDB";
-    protected final static int VERSION_NUM = 1;
+    protected final static int VERSION_NUM = 2;
     public final static String TABLE_NAME = "CONTACTS";
     public final static String COL_ID = "_id";
     public final static String COL_SEND = "isSend";

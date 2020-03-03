@@ -45,6 +45,14 @@ public class ProfileActivity extends AppCompatActivity {
                 startChatRoomActivity();
             }
         });
+
+        final Button btn4 = (Button)findViewById(R.id.button4);
+        btn4.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                startWeatherForecast();
+            }
+        });
     }
 
     final int REQUEST_IMAGE_CAPTURE = 1;
@@ -73,7 +81,11 @@ public class ProfileActivity extends AppCompatActivity {
 //        finish();
     }
 
-
+    private void startWeatherForecast() {
+        Intent intent = new Intent(ProfileActivity.this, WeatherForecast.class);
+        startActivity(intent);
+//        finish();
+    }
 
 
     @Override

@@ -37,4 +37,7 @@
     <string name="delete_message2">数据库id为：</string>
     <string name="yes">是</string>
     <string name="no">否</string>
+
+    <string name="Go_to_weather">天气预报</string>
+
 </resources>

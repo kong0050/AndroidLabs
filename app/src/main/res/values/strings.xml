@@ -36,4 +36,6 @@
     <string name="delete_message2">The database id:</string>
     <string name="yes">YES</string>
     <string name="no">NO</string>
+    <string name="Go_to_weather">Go to WeatherForecast</string>
+
 </resources>
