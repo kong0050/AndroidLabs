@@ -8,32 +8,28 @@
 
     <ImageView
         android:id="@+id/ImageView01"
-        android:layout_width="200dp"
-        android:layout_height="200dp" />
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
     <TextView
         android:id="@+id/current_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="current_temperature"
-        android:textSize="25dp" />
+        android:text="current_temperature" />
     <TextView
         android:id="@+id/min_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="min_temperature"
-        android:textSize="25dp" />
+        android:text="min_temperature" />
     <TextView
         android:id="@+id/max_temperature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="max_temperature"
-        android:textSize="25dp" />
+        android:text="max_temperature"/>
     <TextView
         android:id="@+id/UV_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="UV_rating"
-        android:textSize="25dp" />
+        android:text="UV_rating" />
     <ProgressBar
         android:id="@+id/ProgressBar"
         android:layout_width="match_parent"
