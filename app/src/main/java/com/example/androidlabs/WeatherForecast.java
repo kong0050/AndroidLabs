@@ -87,40 +87,42 @@ public class WeatherForecast extends AppCompatActivity {
                                 publishProgress(75);
                             } else if (tagName.equalsIgnoreCase("weather")) {
                                 iconName = xpp.getAttributeValue(null, "icon");
+
+                                try {
+                                    String message = "";
+
+                                    boolean fileExists = fileExistance(iconName + ".png");
+                                    if (!fileExists) {
+                                        String OpenWeatherMap = "http://openweathermap.org/img/w/" + iconName + ".png";
+                                        URL iconUrl = new URL(OpenWeatherMap);
+                                        icon = getImage(iconUrl);
+                                        FileOutputStream outputStream = openFileOutput(iconName + ".png", Context.MODE_PRIVATE);
+                                        icon.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
+                                        outputStream.flush();
+                                        outputStream.close();
+                                        message = "Adding new image";
+                                    } else {
+                                        FileInputStream fis = null;
+                                        try {
+                                            fis = new FileInputStream(getBaseContext().getFileStreamPath(iconName + ".png"));
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
+                                        icon = BitmapFactory.decodeStream(fis);
+                                        message = "Image already exists";
+                                    }
+                                    Log.i("INFO", "file name=" + iconName + ".png " + message);
+                                    publishProgress(100);
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                             }
                             break;
                         case END_TAG:           //This is an end tag: </ ... >
                             break;
                         case TEXT:              //This is text between tags < ... > Hello world </ ... >
                             break;
-                    }
-                    String message = "";
-                    try {
-                        boolean fileExists = fileExistance(iconName + ".png");
-                        if (fileExists) {
-                            FileInputStream fis = null;
-                            try {
-                                fis = new FileInputStream(getBaseContext().getFileStreamPath(iconName + ".png"));
-                            } catch (Exception e) {
-                                e.printStackTrace();
-                            }
-                            icon = BitmapFactory.decodeStream(fis);
-                            message = "Image already exists";
-                        } else {
-                            String OpenWeatherMap = "http://openweathermap.org/img/w/" + iconName + ".png";
-                            URL iconUrl = new URL(OpenWeatherMap);
-                            icon = getImage(iconUrl);
-                            FileOutputStream outputStream = openFileOutput(iconName + ".png", Context.MODE_PRIVATE);
-                            icon.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
-                            outputStream.flush();
-                            outputStream.close();
-                            message = "Adding new image";
-                        }
-                        Log.i("INFO", "file name=" + iconName + ".png" + message);
-                        publishProgress(100);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
                     }
 
                     xpp.next(); // move the pointer to next XML element
