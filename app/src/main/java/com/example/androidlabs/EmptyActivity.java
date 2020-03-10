@@ -22,7 +22,7 @@ public class EmptyActivity extends AppCompatActivity {
         dFragment.setArguments( dataToPass ); //pass it a bundle for information
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frameLayout, dFragment) //Add the fragment in FrameLayout
+                .replace(R.id.frameLayout1, dFragment) //Add the fragment in FrameLayout
                 .commit(); //actually load the fragment.
     }
 }

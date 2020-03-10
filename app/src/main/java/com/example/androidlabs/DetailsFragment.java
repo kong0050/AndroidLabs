@@ -56,6 +56,9 @@ public class DetailsFragment extends Fragment {
 
             //Tell the parent activity to remove
             parentActivity.getSupportFragmentManager().beginTransaction().remove(this).commit();
+            if(parentActivity.getSupportFragmentManager().findFragmentById(R.id.frameLayout)==null){
+                parentActivity.finish();
+            }
         });
         return result;
     }
