@@ -2,10 +2,12 @@ package com.example.androidlabs;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -26,6 +28,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatRoomActivity extends AppCompatActivity {
+
+    public static final String ITEM_SELECTED = "ITEM";
+    public static final String ITEM_POSITION = "POSITION";
+    public static final String ITEM_ID = "ID";
+    public static final String ITEM_isSEND = "isSEND";
+
     List<chatMessage> chatList = new ArrayList<>();
     SQLiteDatabase db;
     @Override
@@ -43,6 +51,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         final Button btn1 = (Button)findViewById(R.id.btn_chat_message_send);
         final Button btn2 = (Button)findViewById(R.id.btn_chat_message_receive);
 
+        boolean isTablet = findViewById(R.id.frameLayout) != null;
 
         btn1.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -114,6 +123,10 @@ public class ChatRoomActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         deleteMessageFromDb(selected);
                         chatList.remove(theList.getItemAtPosition(position));
+                        if(isTablet){
+                            Fragment fragmentA = getSupportFragmentManager().findFragmentById(R.id.frameLayout);
+                            getSupportFragmentManager().beginTransaction().remove(fragmentA).commit();
+                        }
                         myListAdapter.notifyDataSetChanged();
                     }
                 });
@@ -129,6 +142,36 @@ public class ChatRoomActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        theList.setOnItemClickListener((list, item, position, id) -> {
+            //Create a bundle to pass data to the new fragment
+            Bundle dataToPass = new Bundle();
+            dataToPass.putString(ITEM_SELECTED, chatList.get(position).getMessage());
+            dataToPass.putInt(ITEM_POSITION, position);
+            dataToPass.putLong(ITEM_ID, id);
+            if(chatList.get(position).getIsSend()==true){
+                dataToPass.putString(ITEM_isSEND, "true");
+            }else{
+                dataToPass.putString(ITEM_isSEND, "false");
+            }
+
+            if(isTablet)
+            {
+                DetailsFragment dFragment = new DetailsFragment(); //add a DetailFragment
+                dFragment.setArguments( dataToPass ); //pass it a bundle for information
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frameLayout, dFragment) //Add the fragment in FrameLayout
+                        .commit(); //actually load the fragment.
+            }
+            else //isPhone
+            {
+                Intent nextActivity = new Intent(ChatRoomActivity.this, EmptyActivity.class);
+                nextActivity.putExtras(dataToPass); //send data to next activity
+                startActivity(nextActivity); //make the transition
+            }
+        });
+
 }
 
     private void loadDataFromDatabase()

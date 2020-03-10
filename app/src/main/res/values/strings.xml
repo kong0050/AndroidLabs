@@ -38,4 +38,7 @@
     <string name="no">NO</string>
     <string name="Go_to_weather">Go to WeatherForecast</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment1">Message Here</string>
+    <string name="hello_blank_fragment2">ID= </string>
 </resources>

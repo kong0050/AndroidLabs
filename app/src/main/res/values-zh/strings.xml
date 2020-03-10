@@ -39,5 +39,7 @@
     <string name="no">否</string>
 
     <string name="Go_to_weather">天气预报</string>
+    <string name="hello_blank_fragment1">Message Here</string>
+    <string name="hello_blank_fragment2">ID= </string>
 
 </resources>
