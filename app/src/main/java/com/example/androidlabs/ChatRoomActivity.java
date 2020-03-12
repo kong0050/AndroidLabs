@@ -125,7 +125,9 @@ public class ChatRoomActivity extends AppCompatActivity {
                         chatList.remove(theList.getItemAtPosition(position));
                         if(isTablet){
                             Fragment fragmentA = getSupportFragmentManager().findFragmentById(R.id.frameLayout);
-                            getSupportFragmentManager().beginTransaction().remove(fragmentA).commit();
+                            if( fragmentA != null ) {
+                                getSupportFragmentManager().beginTransaction().remove(fragmentA).commit();
+                            }
                         }
                         myListAdapter.notifyDataSetChanged();
                     }
