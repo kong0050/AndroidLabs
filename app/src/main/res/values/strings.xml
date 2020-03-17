@@ -41,4 +41,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment1">Message Here</string>
     <string name="hello_blank_fragment2">ID= </string>
+
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

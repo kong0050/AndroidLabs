@@ -53,6 +53,14 @@ public class ProfileActivity extends AppCompatActivity {
                 startWeatherForecast();
             }
         });
+
+        final Button btn5 = (Button)findViewById(R.id.button5);
+        btn5.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                startTestToolbar();
+            }
+        });
     }
 
     final int REQUEST_IMAGE_CAPTURE = 1;
@@ -72,21 +80,24 @@ public class ProfileActivity extends AppCompatActivity {
             mImageButton.setImageBitmap(imageBitmap);
         }
         Log.e(ACTIVITY_NAME,"In function:" + "onActivityResult" );
+        if(requestCode==500){
+            finish();
+        }
     }
-
 
     private void startChatRoomActivity() {
         Intent intent = new Intent(ProfileActivity.this, ChatRoomActivity.class);
         startActivity(intent);
-//        finish();
     }
 
     private void startWeatherForecast() {
         Intent intent = new Intent(ProfileActivity.this, WeatherForecast.class);
         startActivity(intent);
-//        finish();
     }
-
+    private void startTestToolbar() {
+        Intent intent = new Intent(ProfileActivity.this, TestToolbar.class);
+        startActivityForResult(intent,500);
+    }
 
     @Override
     public void onStart() {
